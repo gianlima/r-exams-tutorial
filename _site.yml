@@ -3,8 +3,14 @@ output_dir: "docs"
 navbar:
   title: "Gian Lima"
   left:
+    - text: "Home"
+      href: https://gianlima.github.io/
     - text: "Tutorial Exams"
       href: index.html
+  right:
+    - text: GitHub
+      icon: fa-github fa-lg
+      href: https://github.com/gianlima/r-exams-tutorial
 output:
   html_document:
     theme: yeti
