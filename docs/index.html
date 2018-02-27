@@ -209,67 +209,70 @@ $(document).ready(function () {
 </div>
 
 
-<p>Essa página tem como objetivo criar tutoriais em português para o pacote <em>Exams</em>. O pacote permite a geração automática de exames baseado em questões no formato <em>Markdown</em> ou <em>LaTeX</em>, possibilitando incluir código R para geração dinâmica de elementos de questões.</p>
-<p>Após a criação das questões, o examinando escolhe quais questões quer utilizar para formar o exame. Os formatos de saída dos exames podem ser em PDF, HTML, Docx, entre outros. As provas podem ser aplicadas de forma escrita ou online.</p>
+<p>Essa página tem como objetivo criar tutoriais em português para o pacote <a href="http://www.r-exams.org/">exams</a>. O pacote permite a geração automática de exames baseado em questões no formato <em>Markdown</em> ou <em>LaTeX</em>, possibilitando incluir código R para geração dinâmica de elementos de questões.</p>
+<p>Após a criação das questões, o examinador escolhe quais questões quer utilizar para formar o exame. Os formatos de saída dos exames podem ser em PDF, HTML, Docx, entre outros. As provas podem ser aplicadas de forma escrita ou online.</p>
 <div id="tutoriais" class="section level2 tabset tabset-fade tabset-pills">
 <h2>Tutoriais</h2>
 <div id="info" class="section level3">
 <h3>Info</h3>
-<h3>
-Informações iniciais
-</h3>
+<div id="informacoes-iniciais" class="section level4">
+<h4>Informações iniciais</h4>
 <ol style="list-style-type: decimal">
-<li>Com o pacote exams é possível criar o mesmo exame: <br><br>
-<ul>
-<li>com ordem aleatória das alternativas. Cada examinando receberá uma prova com a ordem das alternativas de forma aleatória.</li>
-<li>com várias alternativas, porém escolhendo a quantidade que irá aparecer. <em>Exemplo</em>: o examinador cria 7 alternativas da mesma questão, porém o examinando quer que seja mostrado apenas 4 delas. Dessa forma o pacote exams escolhe aleatoriamente 3 alternativas erradas + alternativa correta.</li>
-<li>sendo a resposta correta variando conforme variáveis numéricas da questão sendo geradas aleatoriamente. É possível que todas as respostas certas sejam valores diferentes. <br><br></li>
-</ul></li>
-<li><p>Torna-se mais difícil a possibilidade de trapacear no teste devido os motivos apresentados no tópico 1.</p></li>
-<li>Os exames são corrigidos automaticamente da seguinte forma:
-<ul>
-<li>exames são gerados, impressos e entregues aos alunos</li>
-<li>os alunos preenchem a folha resposta e entregam ao examinando</li>
-<li>as folhas resposta são escaneadas e lidas pelo pacote</li>
-<li>o resultado final com a pontuação dos examinandos é gerado automaticamente</li>
-</ul></li>
+<li>Com o pacote exams é possível criar o mesmo exame:</li>
 </ol>
+<ul>
+<li>Com ordem aleatória das alternativas. Cada examinado receberá uma prova com a ordem das alternativas de forma aleatória.</li>
+<li>Com várias alternativas, porém escolhendo a quantidade que irá aparecer. <em>Exemplo</em>: o examinador cria 7 alternativas da mesma questão, porém ele quer que sejam mostradas apenas 4 delas. Dessa forma o pacote exams escolhe aleatoriamente 3 alternativas erradas + alternativa correta.</li>
+<li>Sendo a resposta correta variando conforme variáveis numéricas da questão sendo geradas aleatoriamente. É possível que todas as respostas certas sejam valores diferentes.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Torna-se mais difícil a possibilidade de trapacear no teste devido os motivos apresentados no tópico 1.</li>
+<li>Os exames são corrigidos automaticamente da seguinte forma:</li>
+</ol>
+<ul>
+<li>Exames são gerados, impressos e entregues aos alunos.</li>
+<li>Os alunos preenchem a folha resposta e entregam ao examinador.</li>
+<li>As folhas resposta são escaneadas e lidas pelo pacote.</li>
+<li>O resultado final com a pontuação dos examinados é gerado automaticamente.</li>
+</ul>
+</div>
 </div>
 <div id="primeiros-passos" class="section level3">
 <h3>Primeiros Passos</h3>
-<h3>
-Olhada inicial: instalação e questões prontas
-</h3>
+<div id="olhada-inicial-instalacao-e-questoes-prontas" class="section level4">
+<h4>Olhada inicial: instalação e questões prontas</h4>
 <ol style="list-style-type: decimal">
-<li>Será necessário ter instalado:
+<li>Será necessário ter instalado:</li>
+</ol>
 <ul>
 <li>Software R;</li>
 <li>Sistema tipográfico LaTeX;</li>
 <li>IDE para utilizar o R, por exemplo o RStudio;</li>
 <li>Conversor de documentos Pandoc, já vem instalado no RStudio.</li>
-</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
 <li>Instalar o pacote exams e ativá-lo</li>
 </ol>
 <pre class="r"><code>install.packages(&quot;exams&quot;, dependencies = TRUE)
-library(&quot;exams&quot;) # ativar pacote </code></pre>
+library(&quot;exams&quot;) # ativar pacote</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li><p>Criar pasta para receber arquivos. No meu caso, criei uma pasta chamada “exames”</p></li>
-<li><p>Indicar o caminho onde se encontra o diretório que será utilizado</p></li>
+<li>Criar pasta para receber arquivos. No meu caso, criei uma pasta chamada <code>exames</code>.</li>
+<li>Abrir o R neste diretório ou indicar o caminho para ele <!-- Nunca é bom utilizar o setwd em scripts e tutoriais. Se realmente for --> <!-- necessário, usar com links relativos, e nunca com links absolutos --></li>
 </ol>
-<pre class="r"><code>setwd(&quot;C:/Users/Eloi/Desktop/exames&quot;) # salvei a pasta exames no desktop</code></pre>
+<pre class="r"><code>setwd(&quot;/camiho/para/diretorio/exames&quot;)</code></pre>
 <ol start="5" style="list-style-type: decimal">
-<li>Importar arquivos/exercícios já prontos do pacote “exams”</li>
+<li>Importar arquivos/exercícios já prontos do pacote <strong>exams</strong></li>
 </ol>
 <pre class="r"><code>exams_skeleton(markup = &quot;markdown&quot;, encoding = &quot;UTF-8&quot;,
   writer = c(&quot;exams2html&quot;, &quot;exams2pdf&quot;, &quot;exams2moodle&quot;))</code></pre>
 <ol start="6" style="list-style-type: decimal">
-<li>Foram criados dentro do diretório:
-<ul>
-<li>pasta <em>exercises</em> contendo 31 exercícios em formato Rmarkdown</li>
-<li>pasta <em>template</em> com modelos em formato LaTeX</li>
-<li>4 arquivos formato R demonstrando como criar exames nos formatos HTML, Moodle e PDF</li>
-</ul></li>
+<li>Foram criados dentro do diretório:</li>
 </ol>
+<ul>
+<li>Pasta <em>exercises</em> contendo 31 exercícios em formato Rmarkdown</li>
+<li>Pasta <em>template</em> com modelos em formato LaTeX</li>
+<li>4 arquivos formato R demonstrando como criar exames nos formatos HTML, Moodle e PDF</li>
+</ul>
 <pre class="r"><code>dir() # verificar o que há no diretório</code></pre>
 <ol start="7" style="list-style-type: decimal">
 <li>Utilizar o exercício <strong>Swiss Capital</strong> (capital da Suíça) para visualizar a questão em PDF e HTML. Os arquivos não são salvos, apenas renderizados.</li>
@@ -277,86 +280,91 @@ library(&quot;exams&quot;) # ativar pacote </code></pre>
 <pre class="r"><code>exams2html(&quot;exercises/swisscapital.Rmd&quot;) # gera questão em HTML
 exams2pdf(&quot;exercises/swisscapital.Rmd&quot;) # gera questão em PDF</code></pre>
 <ol start="8" style="list-style-type: decimal">
-<li>Também é possível abrir com outros templates:
+<li>Também é possível abrir com outros templates:</li>
+</ol>
 <ul>
-<li><em>exam.tex</em>, com problema, solução e folha de resposta <em>não preenchida</em></li>
-<li><em>plain.tex</em>, apenas problema e solução</li>
-<li><em>solution.tex</em>, com problema, solução e folha de resposta <em>preenchida</em></li>
-</ul></li>
-</ol>
-<pre class="r"><code>setwd(&quot;exercises&quot;) # utilizar diretório &#39;exercises&#39;
+<li><code>exam.tex</code>, com problema, solução e folha de resposta <em>não preenchida</em></li>
+<li><code>plain.tex</code>, apenas problema e solução</li>
+<li><code>solution.tex</code>, com problema, solução e folha de resposta <em>preenchida</em> <!-- Novamente é melhor não usar o setwd, e ficar na raiz do diretório, e --> <!--  usar links relativos nas funções --></li>
+</ul>
+<pre class="r"><code>exams2pdf(&quot;swisscapital.Rmd&quot;,
+          template = &quot;templates/exam.tex&quot;)
 exams2pdf(&quot;swisscapital.Rmd&quot;,
-          template = &quot;../templates/exam.tex&quot;)
+          template = &quot;templates/plain.tex&quot;)
 exams2pdf(&quot;swisscapital.Rmd&quot;,
-          template = &quot;../templates/plain.tex&quot;)
-exams2pdf(&quot;swisscapital.Rmd&quot;,
-          template = &quot;../templates/solution.tex&quot;)</code></pre>
+          template = &quot;templates/solution.tex&quot;)</code></pre>
 <ol start="9" style="list-style-type: decimal">
-<li>Abrir o arquivo <em>swisscapital.Rmd</em> para ver como foi editado. Lembre-se que está saldo dentro da pasta <em>exercises</em></li>
+<li>Abrir o arquivo <code>swisscapital.Rmd</code> para ver como foi editado. Lembre-se que está salvo dentro da pasta <code>exercises</code>. <!-- Padronizar as aspas: ' para " --> <!-- Também não é bom usar o file.edit porque não funciona igual em --> <!-- diferentes IDEs --></li>
 </ol>
-<pre class="r"><code>file.edit(&#39;swisscapital.Rmd&#39;)</code></pre>
+</div>
 </div>
 <div id="exame-escrito" class="section level3">
 <h3>Exame escrito</h3>
-<h3>
-Criando exames na prática com questões prontas
-</h3>
+<div id="criando-exames-na-pratica-com-questoes-prontas" class="section level4">
+<h4>Criando exames na prática com questões prontas</h4>
 <div class="panel panel-primary">
 <div class="panel-heading">
 Atenção
 </div>
 <div class="panel-body">
-Se você acabou de ver a aba <em>Primeiros Passos</em>, apenas dê continuidade. Caso não tenha visto os <em>Primeiros Passos</em>, confira os passos de 1 a 5 antes de dar início a esse tutorial.
+<p>Se você acabou de ver a aba <em>Primeiros Passos</em>, apenas dê continuidade. Caso não tenha visto os <em>Primeiros Passos</em>, confira os passos de 1 a 5 antes de dar início a esse tutorial.</p>
 </div>
 </div>
 <ol style="list-style-type: decimal">
-<li>Criar questões:
+<li>Criar questões:</li>
+</ol>
 <ul>
 <li>Aleatórias formando um banco de questões</li>
 <li>Questões específicas para um determinado exame</li>
-</ul></li>
-</ol>
-<pre><code>Neste tutorial será utilizado questões já prontas do pacote. Para aprender como montar as questões, confira a aba XXX.</code></pre>
+</ul>
+<div class="panel panel-warning">
+<div class="panel-heading">
+Atenção
+</div>
+<div class="panel-body">
+<p>Neste tutorial será utilizado questões já prontas do pacote. Para aprender como montar as questões, confira a aba XXX.</p>
+</div>
+</div>
 <ol start="2" style="list-style-type: decimal">
-<li>Selecionar questões que serão utilizadas no exame. Neste caso montaremos com 6 questões. Retornar ao diretório <em>exames</em></li>
+<li>Selecionar questões que serão utilizadas no exame. Neste caso montaremos com 6 questões. <!-- Qual o motivo de usar o `c()` naquelas duas questões? Precisa explicar. --></li>
 </ol>
-<pre class="r"><code>setwd(&quot;C:/Users/Eloi/Desktop/exames&quot;)
-exame &lt;- list(
+<pre class="r"><code>exame &lt;- list(
   &quot;tstat2.Rnw&quot;,
   &quot;ttest.Rnw&quot;,
   &quot;relfreq.Rnw&quot;,
   &quot;anova.Rnw&quot;,
-  c(&quot;boxplots.Rnw&quot;, &quot;scatterplot.Rnw&quot;),
+  c(&quot;boxplots.Rnw&quot;, &quot;scatterplot.Rnw&quot;), # qual a diferença?
   &quot;cholesky.Rnw&quot;
 )</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>Precisamos indicar:
-<ul>
-<li>lista de exercícios (chamamos a lista de <em>exame</em> anteriormente)</li>
-<li>quantos exames precisamos (<em>n</em>)</li>
-<li>a pontuação de cada exercício (<em>points</em>)</li>
-<li>em qual pasta os exames ficarão salvos, a pasta será criada automaticamente (<em>dir</em>)</li>
-<li>nome dos exames (<em>name</em>)</li>
-<li>data (<em>date</em>)</li>
-<li>mostrar os pontos na prova (<em>showpoints</em>)</li>
-</ul></li>
+<li>Precisamos indicar:</li>
 </ol>
+<ul>
+<li>lista de exercícios (chamamos a lista de <code>exame</code> anteriormente)</li>
+<li>quantos exames precisamos (<code>n</code>)</li>
+<li>a pontuação de cada exercício (<code>points</code>)</li>
+<li>em qual pasta os exames ficarão salvos, a pasta será criada automaticamente (<code>dir</code>)</li>
+<li>nome dos exames (<code>name</code>)</li>
+<li>data (<code>date</code>)</li>
+<li>mostrar os pontos na prova (<code>showpoints</code>) <!-- O que significa nops? É preciso explicar ou usar um nome mais intuitivo. --></li>
+</ul>
 <pre class="r"><code>set.seed(403) # semente aleatória da demonstração
 ex1 &lt;- exams2nops(exame, n = 2,
                   dir = &quot;nops_pdf&quot;, name = &quot;demo&quot;, date = &quot;2015-07-29&quot;,
                   points = c(1, 1, 1, 2, 2, 3), showpoints = TRUE)</code></pre>
+<p>Alguns detalhes:</p>
 <ul>
-<li>Perceba que foi criado uma pasta chamada <em>nops_pdf</em> que contém 3 arquivos:
+<li>Perceba que foi criado uma pasta chamada <code>nops_pdf</code> que contém 3 arquivos:
 <ul>
-<li>2 exames: <em>demo1</em> e <em>demo2</em></li>
-<li>arquivo <em>demo.rds</em> onde contém informações sobre os exames criados <br><br></li>
+<li>2 exames: <code>demo1</code> e <code>demo2</code></li>
+<li>arquivo <code>demo.rds</code> onde contém informações sobre os exames criados</li>
 </ul></li>
-<li>Nos exames em PDF <em>demo1</em> e <em>demo2</em>, já contém:
+<li>Os exames em PDF <code>demo1</code> e <code>demo2</code>, já contém:
 <ul>
 <li>folha de resposta</li>
-<li>1 folha em branco caso seja impresso frente em verso a folha resposta. Caso não deseje, insira o argumento <em>duplex = FALSE</em></li>
+<li>1 folha em branco caso seja impresso frente em verso a folha resposta. Caso não deseje, insira o argumento <code>duplex = FALSE</code></li>
 <li>6 questões sem solução</li>
-<li>folhas de rascunho <br><br></li>
+<li>folhas de rascunho</li>
 </ul></li>
 <li>Argumentos para adicionar na função <code>exams2nops()</code> para personalizar:
 <ul>
@@ -368,9 +376,16 @@ ex1 &lt;- exams2nops(exame, n = 2,
 <ol start="4" style="list-style-type: decimal">
 <li>Imprimir os arquivos gerados</li>
 </ol>
-<pre><code>É recomendado imprimir com o clipe do lado esquerdo no topo, e NÃO escolher a opção &quot;Ajustar a área imprimível&quot;.</code></pre>
+<div class="panel panel-warning">
+<div class="panel-heading">
+Atenção
+</div>
+<div class="panel-body">
+<p>É recomendado imprimir com o clipe do lado esquerdo no topo, e NÃO escolher a opção “Ajustar a área imprimível”.</p>
+</div>
+</div>
 <ol start="5" style="list-style-type: decimal">
-<li>Criar arquivo com o registro (possivelmente matrícula), nome e id de cada examinando. Arquivo precisa estar no formato .csv, pode ser gerado num editor de planilhas. Código abaixo representa uma demonstração de planilha criada dentro do R</li>
+<li>Criar arquivo com o registro (possivelmente matrícula), nome e id de cada examinado. Arquivo precisa estar no formato <code>.csv</code>, e pode ser gerado num editor de planilhas. O código abaixo representa uma demonstração de planilha criada dentro do R</li>
 </ol>
 <pre class="r"><code>write.table(data.frame(
   registration = c(&quot;1501090&quot;, &quot;9901071&quot;),
@@ -380,10 +395,10 @@ ex1 &lt;- exams2nops(exame, n = 2,
 <ul>
 <li>Observe que é necessário utilizar os argumentos:
 <ul>
-<li><code>registration</code>: registro de cada examinando contendo 7 números</li>
-<li><code>name</code>: nome de cada examinando</li>
-<li><code>id</code>: identificação de cada examinando</li>
-<li><code>file</code>: nome do arquivo <em>.csv</em> que será criado</li>
+<li><code>registration</code>: registro de cada examinado contendo 7 números</li>
+<li><code>name</code>: nome de cada examinado</li>
+<li><code>id</code>: identificação de cada examinado</li>
+<li><code>file</code>: nome do arquivo <code>.csv</code> que será criado</li>
 </ul></li>
 </ul>
 <ol start="6" style="list-style-type: decimal">
@@ -393,7 +408,7 @@ ex1 &lt;- exams2nops(exame, n = 2,
 <li>Campos de preenchimento disponívels nos exames:
 <ul>
 <li>Dados pessoais: sobrenome, nome e assinatura (<em>não obrigatórios</em>)</li>
-<li>Número de registro: os mesmos colocados no arquivo <em>.csv</em> (obrigatório)</li>
+<li>Número de registro: os mesmos colocados no arquivo <code>.csv</code> (<em>obrigatório</em>)</li>
 <li>Respostas das questões (<em>não obrigatório</em>)</li>
 </ul></li>
 </ul>
@@ -402,19 +417,20 @@ ex1 &lt;- exams2nops(exame, n = 2,
 Atenção!
 </div>
 <div class="panel-body">
-<i>Campo obrigatório</i>: ocorrerá erro na leitura dos exames se não for preenchido ou se for preenchido de forma incorreta <br><br> <i>Campo não obrigatório</i>: não interfere na eficácia da leitura dos exames <br><br>
-<p class="text-danger">
-Cada aluno deverá ter um <i>número de registro</i> diferente dos demais.
-</p>
-</div>
+<ul>
+<li>Campo obrigatório: ocorrerá erro na leitura dos exames se não for preenchido ou se for preenchido de forma incorreta</li>
+<li>Campo não obrigatório: não interfere na eficácia da leitura dos exames</li>
+<li><p><strong>Cada aluno deverá ter um <em>número de registro</em> diferente dos demais</strong></p>
+</div></li>
+</ul>
 </div>
 <ol start="7" style="list-style-type: decimal">
 <li>Escanear folha de resposta</li>
 </ol>
-<p>Os examinandos devem destacar a <em>folha resposta</em> e entregar ao examinador. O examinador, por sua vez, deve escanear a folha. A imagem escaneada deve ser no formato PNG, caso esteja em outro formato pode ser transformada com outro pacote:</p>
+<p>Os examinados devem destacar a <em>folha resposta</em> e entregar ao examinador. O examinador, por sua vez, deve escanear a folha. A imagem escaneada deve ser no formato PNG ou PDF. Caso esteja em outro formato pode ser transformada com outro pacote:</p>
 <pre class="r"><code>install.packages(&quot;magick&quot;)  # instalar pacote Magick
 library(magick) # carregar pacote
-exame1 &lt;- image_read(&#39;path onde se encontra a imagem escaneada&#39;) # carregar imagem dentro do software
+exame1 &lt;- image_read(&quot;/diretorio/com/imagens/escaneadas&quot;) # carregar imagem dentro do software
 image_write(exame1, path = &quot;exame1.png&quot;, format = &quot;png&quot;) # trocar formato e salvar</code></pre>
 <p>Por motivos de demonstração, utilizamos 2 folhas já impressas, preenchidas e escaneadas disponíveis no pacote e que nos servirão de exemplo:</p>
 <pre class="r"><code>img &lt;- dir(system.file(&quot;nops&quot;, package = &quot;exams&quot;), pattern = &quot;nops_scan&quot;,
@@ -424,8 +440,8 @@ file.copy(img, to = &quot;nops_scan&quot;) # inserir imagens dentro da pasta</co
 <ul>
 <li>Observe dentro da pasta exames:
 <ul>
-<li>a pasta <em>nops_scan</em> foi criada</li>
-<li>2 <em>folhas de resposta</em> em formato PNG foram inseridas dentro da pasta <em>nops_scan</em></li>
+<li>a pasta <code>nops_scan</code> foi criada</li>
+<li>2 <em>folhas de resposta</em> em formato PNG foram inseridas dentro da pasta <code>nops_scan</code></li>
 </ul></li>
 </ul>
 <ol start="8" style="list-style-type: decimal">
@@ -433,7 +449,7 @@ file.copy(img, to = &quot;nops_scan&quot;) # inserir imagens dentro da pasta</co
 </ol>
 <pre class="r"><code>nops_scan(dir = &quot;nops_scan&quot;) # leitura das imagens dentro da pasta nops_scan</code></pre>
 <ul>
-<li>Note que dentro da pasta <em>nops_scan</em> um novo arquivo ZIP foi gerado contendo as 2 imagens escaneadas e um arquivo <em>Daten.txt</em> contendo:
+<li>Note que dentro da pasta <em>nops_scan</em> um novo arquivo ZIP foi gerado contendo as 2 imagens escaneadas e um arquivo <code>Daten.txt</code> contendo:
 <ul>
 <li>nome do arquivo das imagens escaneadas;</li>
 <li>Exame ID;</li>
@@ -446,19 +462,17 @@ file.copy(img, to = &quot;nops_scan&quot;) # inserir imagens dentro da pasta</co
 Observações
 </div>
 <div class="panel-body">
-<ul>
-<li>Se houve problema na hora de criar o arquivo ZIP (<em>error status 127</em>), há uma possibilidade de solução a ser testada:
+<p>Se houve problema na hora de criar o arquivo ZIP (<em>error status 127</em>), há uma possibilidade de solução a ser testada:</p>
 <ul>
 <li>Instalar Rtools nesse <a href="https://cran.r-project.org/bin/windows/Rtools/">link</a></li>
 <li>Localizar onde o arquivo foi instalado, provavelmente <code>C:\Rtools</code></li>
 <li>Adicionar <code>C:\Rtools\bin</code> no caminho do sistema em <em>Variáveis do ambiente</em>. Caso não saiba onde encontrar isso, é facilmente encontrado no <em>google.</em></li>
 <li>Dentro da variável <em>PATH</em> adicionar o texto <code>;C:\Rtools\bin</code></li>
-</ul></li>
 </ul>
 </div>
 </div>
 <ol start="9" style="list-style-type: decimal">
-<li>O pacote irá comparar os dados da <em>folha de resposta</em> dos examinandos (<em>Daten.txt</em>) com as respostas corretas geradas pelo examinador durante a criação das questões (<em>demo.rds</em>)</li>
+<li>O pacote irá comparar os dados da <em>folha de resposta</em> dos examinandos (<code>Daten.txt</code>) com as respostas corretas geradas pelo examinador durante a criação das questões (<code>demo.rds</code>), através da função <code>nops_eval()</code></li>
 </ol>
 <pre class="r"><code>ev1 &lt;- nops_eval(
   register = &quot;Exam-2015-07-29.csv&quot;,
@@ -474,20 +488,33 @@ dir() # perceba que foram adicionados 2 arquivos</code></pre>
 <li><code>register</code>: nome da planilha criada no passo 5 (<em>character</em> do argumento <code>file</code>)</li>
 <li><code>solutions</code>: caminho onde está salvo o arquivo RDS quando foi criado os exames passo 3</li>
 </ul></li>
-<li>Adicionados os arquivos <em>nops_eval.csv</em> e <em>nops_eval.zip</em> contendo página HTML com:
+<li>Adicionados os arquivos <code>nops_eval.csv</code> e <code>nops_eval.zip</code> contendo página HTML com:
 <ul>
-<li>nome do examinando</li>
+<li>nome do examinado</li>
 <li>número de registro</li>
 <li>pontos obtidos em cada questão</li>
 <li>questões certas e erradas</li>
 </ul></li>
 </ul>
+<!-- Como fazer para imprimir apenas o gabarito? -->
+</div>
 </div>
 <div id="exame-online" class="section level3">
 <h3>Exame online</h3>
 <ol style="list-style-type: decimal">
 <li>Criar passo-a-passo ainda</li>
 </ol>
+</div>
+<div id="criando-questoes" class="section level3">
+<h3>Criando questões</h3>
+<p>Mostrar quais são os campos fundamentais para criar uma questão (o que é necessário), por exemplo:</p>
+<ul>
+<li>Question</li>
+<li>Solution</li>
+<li>Meta-information</li>
+</ul>
+<p>E o que é necessário em cada um.</p>
+<p>Fazer dois exemplos bem simples (pode ser aqueles de teste de hipótese por exemplo), um <code>schoice</code> e um <code>mchoice</code>.</p>
 </div>
 </div>
 

@@ -7,57 +7,69 @@ author: "Gian Lima"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-  Essa página tem como objetivo criar tutoriais em português para o pacote _Exams_. O pacote permite a geração automática de exames baseado em questões no formato _Markdown_ ou _LaTeX_, possibilitando incluir código R para geração dinâmica de elementos de questões.
-  
-  Após a criação das questões, o examinando escolhe quais questões quer utilizar para formar o exame. Os formatos de saída dos exames podem ser em PDF, HTML, Docx, entre outros. As provas podem ser aplicadas de forma escrita ou online. 
+Essa página tem como objetivo criar tutoriais em português para o pacote
+[exams](http://www.r-exams.org/). O pacote permite a geração automática
+de exames baseado em questões no formato _Markdown_ ou _LaTeX_,
+possibilitando incluir código R para geração dinâmica de elementos de
+questões.
 
+Após a criação das questões, o examinador escolhe quais questões quer
+utilizar para formar o exame. Os formatos de saída dos exames podem ser
+em PDF, HTML, Docx, entre outros. As provas podem ser aplicadas de forma
+escrita ou online.
 
 ## Tutoriais {.tabset .tabset-fade .tabset-pills}
 
 ### Info
-<h3>Informações iniciais</h3>
+
+#### Informações iniciais
 
 1. Com o pacote exams é possível criar o mesmo exame:
-<br><br>
-      - com ordem aleatória das alternativas. Cada examinando receberá uma prova com a ordem das alternativas de forma aleatória. 
-      - com várias alternativas, porém escolhendo a quantidade que irá aparecer. 
-      *Exemplo*: o examinador cria 7 alternativas da mesma questão, porém o examinando quer que seja mostrado apenas 4 delas. Dessa forma o pacote exams escolhe aleatoriamente 3 alternativas erradas + alternativa correta.
-      - sendo a resposta correta variando conforme variáveis numéricas da questão sendo geradas aleatoriamente. É possível que todas as respostas certas sejam valores diferentes.
-<br><br>
-2. Torna-se mais difícil a possibilidade de trapacear no teste devido os motivos apresentados no tópico 1. 
-
+  - Com ordem aleatória das alternativas. Cada examinado receberá uma
+    prova com a ordem das alternativas de forma aleatória.
+  - Com várias alternativas, porém escolhendo a quantidade que irá
+    aparecer. *Exemplo*: o examinador cria 7 alternativas da mesma
+    questão, porém ele quer que sejam mostradas apenas 4 delas.
+    Dessa forma o pacote exams escolhe aleatoriamente 3 alternativas
+    erradas + alternativa correta.
+  - Sendo a resposta correta variando conforme variáveis numéricas da
+  questão sendo geradas aleatoriamente. É possível que todas as
+  respostas certas sejam valores diferentes.
+2. Torna-se mais difícil a possibilidade de trapacear no teste devido os
+   motivos apresentados no tópico 1.
 3. Os exames são corrigidos automaticamente da seguinte forma:
-      - exames são gerados, impressos e entregues aos alunos
-      - os alunos preenchem a folha resposta e entregam ao examinando
-      - as folhas resposta são escaneadas e lidas pelo pacote
-      - o resultado final com a pontuação dos examinandos é gerado automaticamente
+  - Exames são gerados, impressos e entregues aos alunos.
+  - Os alunos preenchem a folha resposta e entregam ao examinador.
+  - As folhas resposta são escaneadas e lidas pelo pacote.
+  - O resultado final com a pontuação dos examinados é gerado
+    automaticamente.
 
-### Primeiros Passos 
+### Primeiros Passos
 
-<h3>Olhada inicial: instalação e questões prontas </h3>
+#### Olhada inicial: instalação e questões prontas
 
 1. Será necessário ter instalado:
-    - Software R;
-    - Sistema tipográfico LaTeX;
-    - IDE para utilizar o R, por exemplo o RStudio;
-    - Conversor de documentos Pandoc, já vem instalado no RStudio.
-    
+  - Software R;
+  - Sistema tipográfico LaTeX;
+  - IDE para utilizar o R, por exemplo o RStudio;
+  - Conversor de documentos Pandoc, já vem instalado no RStudio.
+
 2. Instalar o pacote exams e ativá-lo
 
 ```{r eval = FALSE}
 install.packages("exams", dependencies = TRUE)
-library("exams") # ativar pacote 
+library("exams") # ativar pacote
 ```
 
-3. Criar pasta para receber arquivos. No meu caso, criei uma pasta chamada "exames"
-
-4. Indicar o caminho onde se encontra o diretório que será utilizado
-
+3. Criar pasta para receber arquivos. No meu caso, criei uma pasta chamada `exames`.
+4. Abrir o R neste diretório ou indicar o caminho para ele
+<!-- Nunca é bom utilizar o setwd em scripts e tutoriais. Se realmente for -->
+<!-- necessário, usar com links relativos, e nunca com links absolutos -->
 ```{r eval = FALSE }
-setwd("C:/Users/Eloi/Desktop/exames") # salvei a pasta exames no desktop
+setwd("/camiho/para/diretorio/exames")
 ```
 
-5. Importar arquivos/exercícios já prontos do pacote "exams"
+5. Importar arquivos/exercícios já prontos do pacote **exams**
 
 ```{r eval = FALSE}
 exams_skeleton(markup = "markdown", encoding = "UTF-8",
@@ -65,15 +77,17 @@ exams_skeleton(markup = "markdown", encoding = "UTF-8",
 ```
 
 6. Foram criados dentro do diretório:
-    - pasta _exercises_ contendo 31 exercícios em formato Rmarkdown 
-    - pasta _template_ com modelos em formato LaTeX
-    - 4 arquivos formato R demonstrando como criar exames nos formatos HTML, Moodle e PDF
-    
+  - Pasta _exercises_ contendo 31 exercícios em formato Rmarkdown
+  - Pasta _template_ com modelos em formato LaTeX
+  - 4 arquivos formato R demonstrando como criar exames nos formatos HTML, Moodle e PDF
+
 ```{r eval = FALSE}
 dir() # verificar o que há no diretório
 ```
 
-7. Utilizar o exercício **Swiss Capital** (capital da Suíça) para visualizar a questão em PDF e HTML. Os arquivos não são salvos, apenas renderizados.
+7. Utilizar o exercício **Swiss Capital** (capital da Suíça) para
+   visualizar a questão em PDF e HTML. Os arquivos não são salvos,
+   apenas renderizados.
 
 ```{r eval = FALSE}
 exams2html("exercises/swisscapital.Rmd") # gera questão em HTML
@@ -81,70 +95,75 @@ exams2pdf("exercises/swisscapital.Rmd") # gera questão em PDF
 ```
 
 8. Também é possível abrir com outros templates:
-    - _exam.tex_, com problema, solução e folha de resposta *não preenchida*
-    - _plain.tex_, apenas problema e solução
-    - _solution.tex_, com problema, solução e folha de resposta *preenchida*
-
+  - `exam.tex`, com problema, solução e folha de resposta *não preenchida*
+  - `plain.tex`, apenas problema e solução
+  - `solution.tex`, com problema, solução e folha de resposta *preenchida*
+<!-- Novamente é melhor não usar o setwd, e ficar na raiz do diretório, e -->
+<!--  usar links relativos nas funções -->
 ```{r eval = FALSE}
-setwd("exercises") # utilizar diretório 'exercises'
 exams2pdf("swisscapital.Rmd",
-          template = "../templates/exam.tex")
+          template = "templates/exam.tex")
 exams2pdf("swisscapital.Rmd",
-          template = "../templates/plain.tex")
+          template = "templates/plain.tex")
 exams2pdf("swisscapital.Rmd",
-          template = "../templates/solution.tex")
+          template = "templates/solution.tex")
 ```
 
-
-9. Abrir o arquivo _swisscapital.Rmd_ para ver como foi editado. Lembre-se que está saldo dentro da pasta _exercises_
-
-```{r eval = FALSE}
-file.edit('swisscapital.Rmd')
-```
+9. Abrir o arquivo `swisscapital.Rmd` para ver como foi editado.
+   Lembre-se que está salvo dentro da pasta `exercises`.
+<!-- Padronizar as aspas: ' para " -->
+<!-- Também não é bom usar o file.edit porque não funciona igual em -->
+<!-- diferentes IDEs -->
 
 ### Exame escrito
 
-<h3>Criando exames na prática com questões prontas </h3>
+#### Criando exames na prática com questões prontas
 
 <div class="panel panel-primary">
   <div class="panel-heading">Atenção</div>
   <div class="panel-body">
 Se você acabou de ver a aba _Primeiros Passos_, apenas dê continuidade.
-Caso não tenha visto os _Primeiros Passos_, confira os passos de 1 a 5 antes de dar início a esse tutorial.
-  </div>
+Caso não tenha visto os _Primeiros Passos_, confira os passos de 1 a 5
+antes de dar início a esse tutorial.
+</div>
 </div>
 
 1. Criar questões:
-    - Aleatórias formando um banco de questões
-    - Questões específicas para um determinado exame
+  - Aleatórias formando um banco de questões
+  - Questões específicas para um determinado exame
 
-```
-Neste tutorial será utilizado questões já prontas do pacote. Para aprender como montar as questões, confira a aba XXX.
-```
+<div class="panel panel-warning">
+  <div class="panel-heading">Atenção</div>
+  <div class="panel-body">
+Neste tutorial será utilizado questões já prontas do pacote. Para
+  aprender como montar as questões, confira a aba XXX.
+</div>
+</div>
 
-2. Selecionar questões que serão utilizadas no exame. Neste caso montaremos com 6 questões. Retornar ao diretório _exames_
-
+2. Selecionar questões que serão utilizadas no exame. Neste caso
+   montaremos com 6 questões.
+<!-- Qual o motivo de usar o `c()` naquelas duas questões? Precisa explicar. -->
 ```{r eval = FALSE}
-setwd("C:/Users/Eloi/Desktop/exames")
 exame <- list(
   "tstat2.Rnw",
   "ttest.Rnw",
   "relfreq.Rnw",
   "anova.Rnw",
-  c("boxplots.Rnw", "scatterplot.Rnw"),
+  c("boxplots.Rnw", "scatterplot.Rnw"), # qual a diferença?
   "cholesky.Rnw"
 )
 ```
 
 3. Precisamos indicar:
-      - lista de exercícios (chamamos a lista de _exame_ anteriormente)
-      - quantos exames precisamos (_n_)
-      - a pontuação de cada exercício (_points_)
-      - em qual pasta os exames ficarão salvos, a pasta será criada automaticamente (_dir_)
-      - nome dos exames (_name_)
-      - data (_date_)
-      - mostrar os pontos na prova (_showpoints_)
-
+  - lista de exercícios (chamamos a lista de `exame` anteriormente)
+  - quantos exames precisamos (`n`)
+  - a pontuação de cada exercício (`points`)
+  - em qual pasta os exames ficarão salvos, a pasta será criada
+    automaticamente (`dir`)
+  - nome dos exames (`name`)
+  - data (`date`)
+  - mostrar os pontos na prova (`showpoints`)
+<!-- O que significa nops? É preciso explicar ou usar um nome mais intuitivo. -->
 ```{r eval = FALSE}
 set.seed(403) # semente aleatória da demonstração
 ex1 <- exams2nops(exame, n = 2,
@@ -152,27 +171,37 @@ ex1 <- exams2nops(exame, n = 2,
                   points = c(1, 1, 1, 2, 2, 3), showpoints = TRUE)
 ```
 
-* Perceba que foi criado uma pasta chamada _nops_pdf_ que contém 3 arquivos:
-      - 2 exames: _demo1_ e _demo2_
-      - arquivo _demo.rds_ onde contém informações sobre os exames criados
-<br><br>
-* Nos exames em PDF _demo1_ e _demo2_, já contém:
-      - folha de resposta 
-      - 1 folha em branco caso seja impresso frente em verso a folha resposta. Caso não deseje, insira o argumento _duplex = FALSE_
-      - 6 questões sem solução
-      - folhas de rascunho
-<br><br> 
-* Argumentos para adicionar na função `exams2nops()` para personalizar:
-      - `institution`: nome da instituição
-      - `title` : título do exame
-      - `language` : trocar idioma, `language = "pt"` para português
+Alguns detalhes:
+
+- Perceba que foi criado uma pasta chamada `nops_pdf` que contém 3 arquivos:
+  - 2 exames: `demo1` e `demo2`
+  - arquivo `demo.rds` onde contém informações sobre os exames criados
+- Os exames em PDF `demo1` e `demo2`, já contém:
+  - folha de resposta
+  - 1 folha em branco caso seja impresso frente em verso a folha
+    resposta. Caso não deseje, insira o argumento `duplex = FALSE`
+  - 6 questões sem solução
+  - folhas de rascunho
+- Argumentos para adicionar na função `exams2nops()` para personalizar:
+  - `institution`: nome da instituição
+  - `title` : título do exame
+  - `language` : trocar idioma, `language = "pt"` para português
+
 4. Imprimir os arquivos gerados
 
-```
-É recomendado imprimir com o clipe do lado esquerdo no topo, e NÃO escolher a opção "Ajustar a área imprimível".
-```
+<div class="panel panel-warning">
+  <div class="panel-heading">Atenção</div>
+  <div class="panel-body">
+É recomendado imprimir com o clipe do lado esquerdo no topo, e NÃO
+escolher a opção "Ajustar a área imprimível".
+</div>
+</div>
 
-5. Criar arquivo com o registro (possivelmente matrícula), nome e id de cada examinando. Arquivo precisa estar no formato .csv, pode ser gerado num editor de planilhas. Código abaixo representa uma demonstração de planilha criada dentro do R
+
+5. Criar arquivo com o registro (possivelmente matrícula), nome e id de
+   cada examinado. Arquivo precisa estar no formato `.csv`, e pode ser
+   gerado num editor de planilhas. O código abaixo representa uma
+   demonstração de planilha criada dentro do R
 
 ```{r eval = FALSE}
 write.table(data.frame(
@@ -182,41 +211,46 @@ write.table(data.frame(
 ), file = "Exam-2015-07-29.csv", sep = ";", quote = FALSE, row.names = FALSE)
 ```
 
-* Observe que é necessário utilizar os argumentos:
-      - `registration`: registro de cada examinando contendo 7 números
-      - `name`: nome de cada examinando
-      - `id`: identificação de cada examinando
-      - `file`: nome do arquivo _.csv_ que será criado
+- Observe que é necessário utilizar os argumentos:
+  - `registration`: registro de cada examinado contendo 7 números
+  - `name`: nome de cada examinado
+  - `id`: identificação de cada examinado
+  - `file`: nome do arquivo `.csv` que será criado
 
 6. Aplicar os exames impressos
 
-* Campos de preenchimento disponívels nos exames:
-      - Dados pessoais: sobrenome, nome e assinatura (_não obrigatórios_)
-      - Número de registro: os mesmos colocados no arquivo _.csv_ (obrigatório)
-      - Respostas das questões (_não obrigatório_)
+- Campos de preenchimento disponívels nos exames:
+  - Dados pessoais: sobrenome, nome e assinatura (_não obrigatórios_)
+  - Número de registro: os mesmos colocados no arquivo `.csv` (_obrigatório_)
+  - Respostas das questões (_não obrigatório_)
 
 <div class="panel panel-primary">
   <div class="panel-heading">Atenção!</div>
   <div class="panel-body">
-<i>Campo obrigatório</i>: ocorrerá erro na leitura dos exames se não for preenchido ou se for preenchido de forma incorreta <br><br>
-<i>Campo não obrigatório</i>: não interfere na eficácia da leitura dos exames 
-<br><br>
-<p class="text-danger">Cada aluno deverá ter um <i>número de registro</i> diferente dos demais.</p>
+- Campo obrigatório: ocorrerá erro na leitura dos exames se não for
+preenchido ou se for preenchido de forma incorreta
+- Campo não obrigatório: não interfere na eficácia da leitura dos exames
+- **Cada aluno deverá ter um *número de registro* diferente dos demais**
   </div>
 </div>
 
 7. Escanear folha de resposta
 
- Os examinandos devem destacar a _folha resposta_ e entregar ao examinador. O examinador, por sua vez, deve escanear a folha. A imagem escaneada deve ser no formato PNG, caso esteja em outro formato pode ser transformada com outro pacote:
+Os examinados devem destacar a _folha resposta_ e entregar ao
+examinador. O examinador, por sua vez, deve escanear a folha. A imagem
+escaneada deve ser no formato PNG ou PDF. Caso esteja em outro formato
+pode ser transformada com outro pacote:
 
 ```{r eval = FALSE}
 install.packages("magick")  # instalar pacote Magick
 library(magick) # carregar pacote
-exame1 <- image_read('path onde se encontra a imagem escaneada') # carregar imagem dentro do software
+exame1 <- image_read("/diretorio/com/imagens/escaneadas") # carregar imagem dentro do software
 image_write(exame1, path = "exame1.png", format = "png") # trocar formato e salvar
 ```
 
-Por motivos de demonstração, utilizamos 2 folhas já impressas, preenchidas e escaneadas disponíveis no pacote e que nos servirão de exemplo:
+Por motivos de demonstração, utilizamos 2 folhas já impressas,
+preenchidas e escaneadas disponíveis no pacote e que nos servirão de
+exemplo:
 
 ```{r eval = FALSE}
 img <- dir(system.file("nops", package = "exams"), pattern = "nops_scan",
@@ -224,36 +258,44 @@ img <- dir(system.file("nops", package = "exams"), pattern = "nops_scan",
 dir.create("nops_scan") # criar pasta nops_scan
 file.copy(img, to = "nops_scan") # inserir imagens dentro da pasta
 ```
-* Observe dentro da pasta exames:
-      - a pasta _nops_scan_ foi criada
-      - 2 _folhas de resposta_ em formato PNG foram inseridas dentro da pasta _nops_scan_
-      
+
+- Observe dentro da pasta exames:
+  - a pasta `nops_scan` foi criada
+  - 2 _folhas de resposta_ em formato PNG foram inseridas dentro da
+    pasta `nops_scan`
+
 8. Importar folha de resposta para que o software leia os dados
 
 ```{r eval = FALSE}
 nops_scan(dir = "nops_scan") # leitura das imagens dentro da pasta nops_scan
 ```
 
-* Note que dentro da pasta _nops_scan_ um novo arquivo ZIP foi gerado contendo as 2 imagens escaneadas e um arquivo _Daten.txt_ contendo:
-      - nome do arquivo das imagens escaneadas;
-      - Exame ID;
-      - Número de registro;
-      - resposta de cada questão
-      
-      
+- Note que dentro da pasta _nops_scan_ um novo arquivo ZIP foi gerado
+  contendo as 2 imagens escaneadas e um arquivo `Daten.txt` contendo:
+  - nome do arquivo das imagens escaneadas;
+  - Exame ID;
+  - Número de registro;
+  - resposta de cada questão
+
 <div class="panel panel-warning">
 <div class="panel-heading">Observações</div>
 <div class="panel-body">
-* Se houve problema na hora de criar o arquivo ZIP (_error status 127_), há uma possibilidade de solução a ser testada:
-      - Instalar Rtools nesse [link](https://cran.r-project.org/bin/windows/Rtools/)
-      - Localizar onde o arquivo foi instalado, provavelmente `C:\Rtools`
-      - Adicionar `C:\Rtools\bin` no caminho do sistema em _Variáveis do ambiente_. Caso não saiba onde encontrar isso, é facilmente encontrado no _google._
-      - Dentro da variável _PATH_ adicionar o texto `;C:\Rtools\bin`
+Se houve problema na hora de criar o arquivo ZIP (_error status 127_),
+há uma possibilidade de solução a ser testada:
+
+  - Instalar Rtools nesse [link](https://cran.r-project.org/bin/windows/Rtools/)
+  - Localizar onde o arquivo foi instalado, provavelmente `C:\Rtools`
+  - Adicionar `C:\Rtools\bin` no caminho do sistema em _Variáveis do
+    ambiente_. Caso não saiba onde encontrar isso, é facilmente
+    encontrado no _google._
+  - Dentro da variável _PATH_ adicionar o texto `;C:\Rtools\bin`
 </div>
 </div>
 
-
-9. O pacote irá comparar os dados da _folha de resposta_ dos examinandos (_Daten.txt_) com as respostas corretas geradas pelo examinador durante a criação das questões (_demo.rds_)
+9. O pacote irá comparar os dados da _folha de resposta_ dos examinandos
+   (`Daten.txt`) com as respostas corretas geradas pelo examinador
+   durante a criação das questões (`demo.rds`), através da função
+   `nops_eval()`
 
 ```{r eval = FALSE}
 ev1 <- nops_eval(
@@ -266,30 +308,35 @@ ev1 <- nops_eval(
 dir() # perceba que foram adicionados 2 arquivos
 ```
 
-* Note que foram passados como argumentos alteráveis principais:
-      - `register`: nome da planilha criada no passo 5 (_character_ do argumento `file`)
-      - `solutions`: caminho onde está salvo o arquivo RDS quando foi criado os exames passo 3 
+- Note que foram passados como argumentos alteráveis principais:
+  - `register`: nome da planilha criada no passo 5 (_character_ do
+    argumento `file`)
+   - `solutions`: caminho onde está salvo o arquivo RDS quando foi
+     criado os exames passo 3
 
-* Adicionados os arquivos _nops_eval.csv_ e _nops_eval.zip_ contendo página HTML com:
-      - nome do examinando
-      - número de registro
-      - pontos obtidos em cada questão
-      - questões certas e erradas
+- Adicionados os arquivos `nops_eval.csv` e `nops_eval.zip` contendo
+  página HTML com:
+  - nome do examinado
+  - número de registro
+  - pontos obtidos em cada questão
+  - questões certas e erradas
 
+<!-- Como fazer para imprimir apenas o gabarito? -->
 
-
-
-### Exame online 
+### Exame online
 
 1. Criar passo-a-passo ainda
- 
 
+### Criando questões
 
+Mostrar quais são os campos fundamentais para criar uma questão (o que é
+necessário), por exemplo:
 
+- Question
+- Solution
+- Meta-information
 
+E o que é necessário em cada um.
 
-
-
-
- 
-
+Fazer dois exemplos bem simples (pode ser aqueles de teste de hipótese
+por exemplo), um `schoice` e um `mchoice`.
